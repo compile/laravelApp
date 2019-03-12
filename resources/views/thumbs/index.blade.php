@@ -7,39 +7,39 @@
     <div class="card ">
       <div class="card-header">
         <h1>
-          Author
-          <a class="btn btn-success float-xs-right" href="{{ route('authors.create') }}">Create</a>
+          Thumb
+          <a class="btn btn-success float-xs-right" href="{{ route('thumbs.create') }}">Create</a>
         </h1>
       </div>
 
       <div class="card-body">
-        @if($authors->count())
+        @if($thumbs->count())
           <table class="table table-sm table-striped">
             <thead>
               <tr>
                 <th class="text-xs-center">#</th>
-                <th>Name</th> <th>Thumb</th> <th>Works_count</th> <th>Pop</th> <th>Order</th>
+                <th>Path</th> <th>Status</th> <th>Order</th>
                 <th class="text-xs-right">OPTIONS</th>
               </tr>
             </thead>
 
             <tbody>
-              @foreach($authors as $author)
+              @foreach($thumbs as $thumb)
               <tr>
-                <td class="text-xs-center"><strong>{{$author->id}}</strong></td>
+                <td class="text-xs-center"><strong>{{$thumb->id}}</strong></td>
 
-                <td>{{$author->name}}</td> <td><img src="{{$author->thumb}}"></td> <td>{{$author->works_count}}</td> <td>{{$author->pop}}</td> <td>{{$author->order}}</td>
+                <td>{{$thumb->path}}</td> <td>{{$thumb->status}}</td> <td>{{$thumb->order}}</td>
 
                 <td class="text-xs-right">
-                  <a class="btn btn-sm btn-primary" href="{{ route('authors.show', $author->id) }}">
+                  <a class="btn btn-sm btn-primary" href="{{ route('thumbs.show', $thumb->id) }}">
                     V
                   </a>
 
-                  <a class="btn btn-sm btn-warning" href="{{ route('authors.edit', $author->id) }}">
+                  <a class="btn btn-sm btn-warning" href="{{ route('thumbs.edit', $thumb->id) }}">
                     E
                   </a>
 
-                  <form action="{{ route('authors.destroy', $author->id) }}" method="POST" style="display: inline;" onsubmit="return confirm('Delete? Are you sure?');">
+                  <form action="{{ route('thumbs.destroy', $thumb->id) }}" method="POST" style="display: inline;" onsubmit="return confirm('Delete? Are you sure?');">
                     {{csrf_field()}}
                     <input type="hidden" name="_method" value="DELETE">
 
@@ -50,7 +50,7 @@
               @endforeach
             </tbody>
           </table>
-          {!! $authors->render() !!}
+          {!! $thumbs->render() !!}
         @else
           <h3 class="text-xs-center alert alert-info">Empty!</h3>
         @endif

@@ -8,6 +8,7 @@ $factory->define(App\Models\Work::class, function (Faker $faker) {
 
         'title' => $faker->sentence(6),
         'thumb' => $faker->imageUrl(100,100),
+        'path' => $faker->imageUrl(100,100),
         'pid'  => rand(0,10),
         'uid'  => rand(0,30),
         'pop' => rand(0,100),

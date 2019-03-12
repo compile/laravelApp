@@ -11,6 +11,7 @@ class CreateWorksTable extends Migration
             $table->increments('id');
             $table->string('title')->index();
             $table->text('thumb');
+            $table->text('path');
             $table->integer('pid')->unsigned()->index();
             $table->integer('uid')->unsigned()->index();
             $table->integer('pop')->unsigned()->default(0);

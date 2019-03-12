@@ -11,7 +11,7 @@ class WorksController extends Controller
 {
     public function __construct()
     {
-        $this->middleware('auth', ['except' => ['index', 'show']]);
+        $this->middleware('auth', ['except' => []]);
     }
 
 	public function index()
@@ -27,7 +27,8 @@ class WorksController extends Controller
 
 	public function create(Work $work)
 	{
-		return view('works.create_and_edit', compact('work'));
+	    $test = 'ceshi';
+		return view('works.create_and_edit', compact('work','test'));
 	}
 
 	public function store(WorkRequest $request)

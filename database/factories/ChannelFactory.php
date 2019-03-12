@@ -13,5 +13,6 @@ $factory->define(App\Models\Channel::class, function (Faker $faker) {
          'status'      => $faker->randomNumber(),
          'order'       => $faker->randomNumber(),
 
+
     ];
 });

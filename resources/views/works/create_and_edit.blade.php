@@ -37,8 +37,22 @@
                 </div> 
                 <div class="form-group">
                 	<label for="thumb-field">Thumb</label>
-                	<textarea name="thumb" id="thumb-field" class="form-control" rows="3">{{ old('thumb', $work->thumb ) }}</textarea>
-                </div> 
+                    <label for="thumb-select">
+                        <select name="thumb-path">
+                            <option value="test">test</option>
+                            <option value="test">test</option>
+                            <option value="test">test</option>
+                            <option value="test">test</option>
+                        </select>
+
+
+                    </label>
+                	<input name="thumb" id="thumb-field" class="form-control" value="{{ old('thumb', $work->thumb ) }}"/>
+                </div>
+              <div class="form-group">
+                  <label for="path-field">Path</label>
+                  <input name="path" id="path-field" class="form-control" value="{{ old('path', $work->path ) }}"/>
+              </div>
                 <div class="form-group">
                     <label for="pid-field">Pid</label>
                     <input class="form-control" type="text" name="pid" id="pid-field" value="{{ old('pid', $work->pid ) }}" />

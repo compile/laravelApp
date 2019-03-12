@@ -13,6 +13,11 @@
     <dl><a href="{{ route('channels.create') }}">频道添加</a></dl>
     </dd>
 
+    <dt>缩略图</dt>
+    <dl><a href="{{ route('thumbs.index') }}">缩略图列表</a></dl>
+    <dl><a href="{{ route('thumbs.create') }}">缩略图添加</a></dl>
+    </dd>
+
 
 
 
