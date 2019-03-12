@@ -28,7 +28,7 @@
               <tr>
                 <td class="text-xs-center"><strong>{{$work->id}}</strong></td>
 
-                <td>{{$work->title}}</td> <td>{{$work->thumb}}</td> <td>{{$work->pid}}</td> <td>{{$work->uid}}</td> <td>{{$work->pop}}</td> <td>{{$work->index_recom}}</td> <td>{{$work->channel_recom}}</td> <td>{{$work->status}}</td> <td>{{$work->order}}</td>
+                <td>{{ str_limit($work->title,10,'...')}}</td> <td><img src="{{$work->thumb}}"></td> <td>{{$work->pid}}</td> <td>{{$work->uid}}</td> <td>{{$work->pop}}</td> <td>{{$work->index_recom}}</td> <td>{{$work->channel_recom}}</td> <td>{{$work->status}}</td> <td>{{$work->order}}</td>
 
                 <td class="text-xs-right">
                   <a class="btn btn-sm btn-primary" href="{{ route('works.show', $work->id) }}">

@@ -18,7 +18,7 @@
             <thead>
               <tr>
                 <th class="text-xs-center">#</th>
-                <th>Title</th> <th>Thumb</th> <th>Desc</th> <th>Works_count</th> <th>Status</th> <th>Order</th>
+                <th>Title</th> <th>Thumb</th>   <th>Works_count</th> <th>Status</th> <th>Order</th>
                 <th class="text-xs-right">OPTIONS</th>
               </tr>
             </thead>
@@ -28,7 +28,7 @@
               <tr>
                 <td class="text-xs-center"><strong>{{$channel->id}}</strong></td>
 
-                <td>{{$channel->title}}</td> <td>{{$channel->thumb}}</td> <td>{{$channel->desc}}</td> <td>{{$channel->works_count}}</td> <td>{{$channel->status}}</td> <td>{{$channel->order}}</td>
+                <td>{{ str_limit($channel->title,10,'...')}}</td> <td><img src="{{$channel->thumb}}" style="width:100px;height:100px;"></td>   <td>{{$channel->works_count}}</td> <td>{{$channel->status}}</td> <td>{{$channel->order}}</td>
 
                 <td class="text-xs-right">
                   <a class="btn btn-sm btn-primary" href="{{ route('channels.show', $channel->id) }}">
