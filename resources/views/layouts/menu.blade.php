@@ -18,6 +18,10 @@
     <dl><a href="{{ route('thumbs.create') }}">thumb add</a></dl>
     </dd>
 
+    <dt>uploads</dt>
+    <dl><a href="{{ url('uploads') }}">thumb add</a></dl>
+
+
 
 
 

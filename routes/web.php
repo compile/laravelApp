@@ -24,4 +24,4 @@ Route::resource('channels', 'ChannelsController', ['only' => ['index', 'show', '
 Route::resource('works', 'WorksController', ['only' => ['index', 'show', 'create', 'store', 'update', 'edit', 'destroy']]);
 Route::resource('thumbs', 'ThumbsController', ['only' => ['index', 'show', 'create', 'store', 'update', 'edit', 'destroy']]);
 
-
+Route::any('/uploads', 'ThumbsController@upload');

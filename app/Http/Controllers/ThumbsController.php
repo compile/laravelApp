@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Thumb;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+use Illuminate\Support\Facades\Storage;
 use App\Http\Requests\ThumbRequest;
 
 class ThumbsController extends Controller
@@ -32,6 +33,11 @@ class ThumbsController extends Controller
 
 	public function store(ThumbRequest $request)
 	{
+
+	    print_r($request->all());
+
+
+
 		$thumb = Thumb::create($request->all());
 		return redirect()->route('thumbs.show', $thumb->id)->with('message', 'Created successfully.');
 	}
@@ -57,4 +63,32 @@ class ThumbsController extends Controller
 
 		return redirect()->route('thumbs.index')->with('message', 'Deleted successfully.');
 	}
+
+    public function upload(Request $request, Thumb $thumb)
+    {
+        if ($request->isMethod('POST')) {
+            $files = $request->file("file");
+            if ($files->isValid()) {
+                $oragnalName = $files->getClientOriginalName();
+                $ext = $files->getClientOriginalExtension();
+                $type = $files->getClientMimeType();
+                $realPath = $files->getRealPath();
+                $file_new_name = date('Ymd') . '/' . uniqid() . '.' . $ext;
+
+                echo $file_new_name;
+
+                $bool = Storage::disk('public')->put($file_new_name, file_get_contents($realPath));
+                var_dump($bool);
+
+
+                $test = array('path'=>$file_new_name,'status'=>'2','order'=>'1');
+                $thumb = Thumb::create($test);
+
+                //return json_encode(['status'=>1,'filepath'=>$file_new_name]);
+                return redirect()->route('thumbs.index')->with('message', 'Deleted successfully.');
+
+            }
+        }
+        return view('upload');
+    }
 }
