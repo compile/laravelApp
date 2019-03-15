@@ -20,6 +20,7 @@
 
     <dt>uploads</dt>
     <dl><a href="{{ url('uploads') }}">thumb add</a></dl>
+    <dl><a href="{{ url('uploads_video') }}">video add</a></dl>
 
 
 

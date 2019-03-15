@@ -36,17 +36,12 @@
                 	<input class="form-control" type="text" name="title" id="title-field" value="{{ old('title', $work->title ) }}" />
                 </div> 
                 <div class="form-group">
-                	<label for="thumb-field">Thumb</label>
-                    <label for="thumb-select">
-                        <select name="thumb-path">
-                            <option value="test">test</option>
-                            <option value="test">test</option>
-                            <option value="test">test</option>
-                            <option value="test">test</option>
-                        </select>
-
-
-                    </label>
+                    <label for="thumb-field">Thumb</label>
+                    <select id="mySelect" name="Pid" onchange="changeThumb(this[selectedIndex].value)">
+                        @foreach ($thumbs as $path)
+                            <option value="{{ $path->path }}">{{ $path->path }}</option></p>
+                        @endforeach
+                    </select>
                 	<input name="thumb" id="thumb-field" class="form-control" value="{{ old('thumb', $work->thumb ) }}"/>
                 </div>
               <div class="form-group">
@@ -54,11 +49,22 @@
                   <input name="path" id="path-field" class="form-control" value="{{ old('path', $work->path ) }}"/>
               </div>
                 <div class="form-group">
-                    <label for="pid-field">Pid</label>
+                    <label for="pid-field">Pid</label> <select id="mySelect" name="Pid" onchange="changePid(this[selectedIndex].value)">
+                        @foreach ($channels as $pindao)
+                            <option value="{{ $pindao->id }}">{{ $pindao->title }}</option></p>
+                        @endforeach
+                        <option value="test">test</option>
+                    </select>
                     <input class="form-control" type="text" name="pid" id="pid-field" value="{{ old('pid', $work->pid ) }}" />
                 </div> 
                 <div class="form-group">
-                    <label for="uid-field">Uid</label>
+                    <label for="uid-field">Uid</label>&nbsp;
+                    <select name="Uid" onchange="changeUid(this[selectedIndex].value)">
+                        @foreach ($authors as $user)
+                            <option value="{{ $user->id }}">{{ $user->name }}</option></p>
+                        @endforeach
+
+                    </select>
                     <input class="form-control" type="text" name="uid" id="uid-field" value="{{ old('uid', $work->uid ) }}" />
                 </div> 
                 <div class="form-group">
@@ -91,5 +97,22 @@
     </div>
   </div>
 </div>
+
+    <script>
+
+        function changePid(val){
+           document.getElementById('pid-field').value=val;
+        }
+
+        function changeThumb(val){
+            document.getElementById('thumb-field').value=val;
+        }
+
+        function changeUid(val){
+            document.getElementById('uid-field').value=val;
+        }
+
+
+    </script>
 
 @endsection

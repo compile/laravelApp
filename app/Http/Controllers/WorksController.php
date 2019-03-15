@@ -6,6 +6,7 @@ use App\Models\Work;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\WorkRequest;
+use Illuminate\Support\Facades\DB;
 
 class WorksController extends Controller
 {
@@ -27,8 +28,12 @@ class WorksController extends Controller
 
 	public function create(Work $work)
 	{
-	    $test = 'ceshi';
-		return view('works.create_and_edit', compact('work','test'));
+
+
+	    $authors = DB::table('authors')->get(['id','name']);//作者
+	    $channels = DB::table('channels')->get(['id','title']);//专辑分类
+        $thumbs   = DB::table('thumbs')->get(['path']);//缩略图选择
+		return view('works.create_and_edit', compact('work','authors','channels','thumbs'));
 	}
 
 	public function store(WorkRequest $request)
@@ -39,8 +44,11 @@ class WorksController extends Controller
 
 	public function edit(Work $work)
 	{
+        $authors = DB::table('authors')->get(['id','name']);//作者
+        $channels = DB::table('channels')->get(['id','title']);//专辑分类
+        $thumbs   = DB::table('thumbs')->get(['path']);//缩略图选择
         $this->authorize('update', $work);
-		return view('works.create_and_edit', compact('work'));
+		return view('works.create_and_edit', compact('work','authors','channels','thumbs'));
 	}
 
 	public function update(WorkRequest $request, Work $work)
