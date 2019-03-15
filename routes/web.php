@@ -32,3 +32,5 @@ Route::any('/uploads_video', 'ThumbsController@upload_video');
 
 Route::get('/upload',  'UploadController@index');
 Route::post('/upload', 'UploadController@uploadFile');
+
+Route::any('/test','ThumbsController@test');

@@ -104,10 +104,7 @@ class ThumbsController extends Controller
             //但是在laravel里面有更好的封装好的方法，就是下面这个
             //显示的属性更多
             $fileCharater = $request->file('source');
-            echo 'test';
-            echo '<pre>';
-            print_r($fileCharater);
-            echo '</pre>';
+
 
             if ($fileCharater->isValid()) { //括号里面的是必须加的哦
                 //如果括号里面的不加上的话，下面的方法也无法调用的
@@ -127,9 +124,43 @@ class ThumbsController extends Controller
                 echo 'false';
             }
         }
+
+
         return view('upload_mp4');
     }
 
+
+    public function test(Request $request)
+    {
+//        $file=$request->file('logo');
+
+        $file = Input::file('logo');
+
+        //判断上传过来的文件是否合法
+        if ($file->isValid()){
+
+           // $path=$file->store('uploads/'.date('Ymd'));
+            //return json_encode(asset('/'.$path));
+
+
+//               $file = $request->file("file");
+
+
+//                $oragnalName = $file->getClientOriginalName();
+                $ext = $file->getClientOriginalExtension();
+//                $type = $file->getClientMimeType();
+                $realPath = $file->getRealPath();
+                $file_new_name = date('Ymd') . '/' . uniqid() . '.' . $ext;
+
+                echo $file_new_name;
+
+                $bool = Storage::disk('public')->put($file_new_name, file_get_contents($realPath));
+                var_dump($bool);
+        }else{
+            return json_encode('file is false');
+        }
+
+    }
     public function info(){
         phpinfo();
     }
