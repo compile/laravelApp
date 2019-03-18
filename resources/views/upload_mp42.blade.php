@@ -21,14 +21,14 @@
 <body>
 <div class="container my-4">
 
-    <div class="panel-heading">上传文件</div>
-    <form class="form-horizontal" method="POST" action="./test" enctype="multipart/form-data">
-        {{ csrf_field() }}
-        <label for="file">选择文件</label>
-        <input id="file" type="file" class="form-control" name="logo" required>
-        <button type="submit" class="btn btn-primary">确定</button>
-    </form>
+    <form enctype="multipart/form-data">
+        {{ csrf_token() }}
+        <div class="file-loading">
+            <input id="kv-explorer"  accept="video/*" name="logo" type="file" multiple>
+        </div>
+        <br>
 
+    </form>
 </div>
 </body>
 

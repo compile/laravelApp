@@ -130,12 +130,17 @@ class ThumbsController extends Controller
     }
 
 
-    public function test(Request $request)
+    public function test()
     {
 //        $file=$request->file('logo');
 
         $file = Input::file('logo');
+        $clientName = $file->getClientOriginalName();
 
+        echo '文件名:'.$clientName;
+        echo '<pre>';
+        print_r($file);
+        echo '</pre>';
         //判断上传过来的文件是否合法
         if ($file->isValid()){
 
@@ -149,10 +154,10 @@ class ThumbsController extends Controller
 //                $oragnalName = $file->getClientOriginalName();
                 $ext = $file->getClientOriginalExtension();
 //                $type = $file->getClientMimeType();
-                $realPath = $file->getRealPath();
-                $file_new_name = date('Ymd') . '/' . uniqid() . '.' . $ext;
+                $realPath = $file->getRealPath();//临时
+               echo  $file_new_name = date('Ymd') . '/' . uniqid() . '.' . $ext;
 
-                echo $file_new_name;
+
 
                 $bool = Storage::disk('public')->put($file_new_name, file_get_contents($realPath));
                 var_dump($bool);
